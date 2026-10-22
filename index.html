@@ -1,0 +1,2220 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Binary Academy - ICT ফ্রী ক্লাস রেজিস্ট্রেশন (HSC ২০২৮)</title>
+  
+  <!-- Google Fonts: Hind Siliguri -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #F6F9FB;
+      --card: #FFFFFF;
+      --green: #1DB954;
+      --teal: #0E9E8E;
+      --navy: #0B1D3A;
+      --orange: #FFA800;
+      --line: #E3EAF0;
+      --error: #D64545;
+      --muted: #5B6B7F;
+      
+      --green-tint: #E6F7EC;
+      --teal-tint: #E3F5F4;
+      --orange-tint: #FFF1D6;
+      --error-tint: #FDF2F2;
+
+      --radius-card: 24px;
+      --radius-input: 16px;
+      --shadow: 0 8px 24px rgba(11, 29, 58, 0.08);
+      --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Hind Siliguri', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--navy);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 16px 16px 120px 16px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Faint circuit-line & 0101 background pattern */
+    body::before, body::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      opacity: 0.045;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::before {
+      top: -30px;
+      right: -30px;
+      background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='10' y='30' font-family='monospace' font-size='20' fill='%3C0B1D3A'%3E01010101%3C/text%3E%3Ctext x='10' y='70' font-family='monospace' font-size='20' fill='%3C0B1D3A'%3E10101010%3C/text%3E%3Cpath d='M20 100 H180 V180 H100' stroke='%230B1D3A' stroke-width='2' fill='none'/%3E%3Ccircle cx='180' cy='180' r='6' fill='%230B1D3A'/%3E%3C/svg%3E");
+    }
+
+    body::after {
+      bottom: -30px;
+      left: -30px;
+      background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='10' y='160' font-family='monospace' font-size='20' fill='%3C0B1D3A'%3E01100101%3C/text%3E%3Cpath d='M180 20 H50 V120 H150' stroke='%230B1D3A' stroke-width='2' fill='none'/%3E%3Ccircle cx='50' cy='120' r='6' fill='%230B1D3A'/%3E%3C/svg%3E");
+    }
+
+    .container {
+      width: 100%;
+      max-width: 560px;
+      z-index: 1;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo-container {
+      height: 72px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-container img {
+      height: 72px;
+      max-width: 220px;
+      object-fit: contain;
+    }
+
+    .pill-tag {
+      display: inline-block;
+      background-color: var(--teal-tint);
+      color: var(--teal);
+      font-weight: 700;
+      font-size: 14px;
+      padding: 4px 16px;
+      border-radius: 100px;
+      margin-bottom: 12px;
+    }
+
+    .main-heading {
+      font-size: 26px;
+      line-height: 1.35;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .highlight-price {
+      display: inline-block;
+      color: var(--orange);
+      font-size: 32px;
+      font-weight: 700;
+      text-shadow: 3px 3px 0px var(--navy);
+      margin-top: 2px;
+    }
+
+    .sub-heading {
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .deadline-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--orange-tint);
+      color: #9E6B00;
+      font-weight: 700;
+      font-size: 13.5px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: 1px solid rgba(255, 168, 0, 0.3);
+    }
+
+    .progress-container {
+      margin-bottom: 20px;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 6px;
+      background-color: var(--line);
+      border-radius: 100px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 25%;
+      background-color: var(--green);
+      border-radius: 100px;
+      transition: width var(--transition);
+    }
+
+    .step-labels {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      text-align: center;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .step-label.active {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .step-label.completed {
+      color: var(--navy);
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius-card);
+      padding: 24px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .step-panel {
+      display: none;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    .step-panel.active {
+      display: block;
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .step-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .form-label .required-star {
+      color: var(--error);
+      margin-left: 2px;
+    }
+
+    .helper-text {
+      font-size: 13.5px;
+      color: var(--muted);
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .form-control {
+      width: 100%;
+      height: 56px;
+      padding: 0 16px;
+      font-size: 16px;
+      color: var(--navy);
+      background-color: #FFFFFF;
+      border: 1.5px solid var(--line);
+      border-radius: var(--radius-input);
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(29, 185, 84, 0.25);
+    }
+
+    .form-control.is-invalid {
+      border-color: var(--error);
+      background-color: var(--error-tint);
+    }
+
+    .form-control.is-valid {
+      border-color: var(--green);
+      padding-right: 48px;
+    }
+
+    .valid-tick {
+      position: absolute;
+      right: 14px;
+      color: var(--green);
+      display: none;
+      pointer-events: none;
+    }
+
+    .form-control.is-valid + .valid-tick {
+      display: block;
+    }
+
+    textarea.form-control {
+      height: auto;
+      min-height: 100px;
+      padding: 14px 16px;
+      resize: vertical;
+    }
+
+    .char-counter {
+      font-size: 12px;
+      color: var(--muted);
+      text-align: right;
+      margin-top: 4px;
+    }
+
+    .error-msg {
+      font-size: 13px;
+      color: var(--error);
+      font-weight: 600;
+      margin-top: 6px;
+      display: none;
+    }
+
+    .form-group.has-error .error-msg {
+      display: block;
+    }
+
+    /* Combobox Component Styles */
+    .combobox-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .clear-btn {
+      position: absolute;
+      right: 14px;
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      color: var(--muted);
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background var(--transition);
+      z-index: 2;
+    }
+
+    .clear-btn:hover {
+      background-color: var(--line);
+    }
+
+    .combobox-wrapper .form-control.is-valid ~ .clear-btn {
+      right: 42px;
+    }
+
+    .combobox-listbox {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-input);
+      box-shadow: 0 8px 24px rgba(11, 29, 58, 0.12);
+      max-height: 320px;
+      overflow-y: auto;
+      padding: 6px 0;
+      margin: 0;
+      list-style: none;
+      display: none;
+    }
+
+    .combobox-listbox.open {
+      display: block;
+      animation: comboboxSlideDown 150ms ease-out forwards;
+    }
+
+    @keyframes comboboxSlideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .combobox-option {
+      padding: 12px 16px;
+      min-height: 52px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 150ms ease;
+      user-select: none;
+    }
+
+    .combobox-option:hover,
+    .combobox-option.active-descendant {
+      background-color: rgba(29, 185, 84, 0.10);
+    }
+
+    .combobox-option-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .combobox-option-area {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .match-highlight {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .combobox-option-other {
+      border-top: 1px solid var(--line);
+      color: var(--teal);
+      font-weight: 700;
+      font-size: 14.5px;
+      padding: 14px 16px;
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #FAFCFE;
+    }
+
+    .combobox-option-other:hover,
+    .combobox-option-other.active-descendant {
+      background-color: var(--teal-tint);
+    }
+
+    .custom-college-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+    }
+
+    .change-college-link {
+      background: none;
+      border: none;
+      color: var(--teal);
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .chip-option {
+      flex: 1;
+      min-width: 90px;
+    }
+
+    .chip-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .chip-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      padding: 0 16px;
+      background-color: var(--bg);
+      border: 1.5px solid var(--line);
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      cursor: pointer;
+      user-select: none;
+      transition: all var(--transition);
+      text-align: center;
+    }
+
+    .chip-option input[type="radio"]:checked + .chip-label {
+      background-color: var(--green-tint);
+      border-color: var(--green);
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .chip-option input[type="radio"]:focus-visible + .chip-label {
+      outline: 2px solid var(--green);
+      outline-offset: 2px;
+    }
+
+    .branch-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .branch-card {
+      position: relative;
+    }
+
+    .branch-card input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .branch-card-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px;
+      border: 2px solid var(--line);
+      border-radius: var(--radius-input);
+      cursor: pointer;
+      transition: all var(--transition);
+      background-color: var(--card);
+    }
+
+    .branch-radio-indicator {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid var(--muted);
+      margin-top: 2px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+    }
+
+    .branch-radio-indicator::after {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--green);
+      transform: scale(0);
+      transition: transform var(--transition);
+    }
+
+    .branch-card input[type="radio"]:checked + .branch-card-label {
+      border-color: var(--green);
+      background-color: var(--green-tint);
+    }
+
+    .branch-card input[type="radio"]:checked + .branch-card-label .branch-radio-indicator {
+      border-color: var(--green);
+    }
+
+    .branch-card input[type="radio"]:checked + .branch-card-label .branch-radio-indicator::after {
+      transform: scale(1);
+    }
+
+    .branch-details .branch-name {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--navy);
+    }
+
+    .branch-details .branch-address {
+      font-size: 13.5px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .expandable-section {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 300ms ease, opacity 250ms ease, margin 250ms ease;
+    }
+
+    .expandable-section.open {
+      max-height: 300px;
+      opacity: 1;
+      margin-top: 12px;
+    }
+
+    .social-card {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-input);
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .social-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      gap: 8px;
+    }
+
+    .social-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .social-icon {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+    }
+
+    .social-title {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--navy);
+    }
+
+    .btn-secondary-sm {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--card);
+      border: 1.5px solid var(--navy);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 13px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+      user-select: none;
+      margin-top: 8px;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .custom-checkbox {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--muted);
+      border-radius: 6px;
+      background: var(--card);
+      flex-shrink: 0;
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+    }
+
+    .checkbox-container input[type="checkbox"]:checked + .custom-checkbox {
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    .custom-checkbox svg {
+      display: none;
+      width: 14px;
+      height: 14px;
+      stroke: white;
+      stroke-width: 3;
+    }
+
+    .checkbox-container input[type="checkbox"]:checked + .custom-checkbox svg {
+      display: block;
+    }
+
+    .checkbox-label-text {
+      font-size: 14px;
+      color: var(--navy);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    /* Prize Accordion */
+    .accordion-item {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      margin-top: 16px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .accordion-header {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--bg);
+      border: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--navy);
+      cursor: pointer;
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 14px 16px;
+      background: var(--card);
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.5;
+      border-top: 1px solid var(--line);
+    }
+
+    .accordion-item.active .accordion-content {
+      display: block;
+    }
+
+    .nav-buttons-wrapper {
+      margin-top: 24px;
+      display: flex;
+      gap: 12px;
+    }
+
+    /* Mobile Sticky Bar styling */
+    @media (max-width: 600px) {
+      .nav-buttons-wrapper {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #FFFFFF;
+        padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+        border-top: 1px solid var(--line);
+        box-shadow: 0 -4px 16px rgba(11, 29, 58, 0.06);
+        z-index: 99;
+        margin-top: 0;
+      }
+    }
+
+    .btn {
+      height: 56px;
+      border-radius: var(--radius-input);
+      font-size: 16.5px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: none;
+      transition: all var(--transition);
+      text-decoration: none;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      flex: 2;
+      background-color: var(--green);
+      color: #FFFFFF;
+    }
+
+    .btn-primary:active {
+      transform: scale(0.98);
+      background-color: #179b45;
+    }
+
+    .btn-secondary {
+      flex: 1;
+      background-color: var(--card);
+      border: 2px solid var(--navy);
+      color: var(--navy);
+    }
+
+    .btn:disabled {
+      background-color: var(--line);
+      color: var(--muted);
+      border-color: var(--line);
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Spinner animation */
+    .spinner {
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .success-screen {
+      display: none;
+      text-align: center;
+      padding: 12px 0;
+    }
+
+    .checkmark-svg {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 16px;
+    }
+
+    .checkmark-circle {
+      stroke: var(--green);
+      stroke-width: 3;
+      stroke-dasharray: 166;
+      stroke-dashoffset: 166;
+      animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+    }
+
+    .checkmark-check {
+      transform-origin: 50% 50%;
+      stroke: var(--green);
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 48;
+      stroke-dashoffset: 48;
+      animation: stroke 0.4s cubic-bezier(0.65, 0, 0.45, 1) 0.4s forwards;
+    }
+
+    @keyframes stroke {
+      100% { stroke-dashoffset: 0; }
+    }
+
+    .success-heading {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .success-subtext {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .summary-card {
+      background: var(--bg);
+      border-radius: var(--radius-input);
+      padding: 16px;
+      margin-bottom: 20px;
+      text-align: left;
+      border: 1px solid var(--line);
+    }
+
+    .summary-title {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .summary-value {
+      font-size: 15.5px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .contact-box {
+      margin-top: 16px;
+      margin-bottom: 20px;
+    }
+
+    .tel-link {
+      color: var(--teal);
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .reset-link {
+      display: inline-block;
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    /* Off-screen honeypot & screen-reader elements */
+    .honeypot-field, .sr-only {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Footer styling */
+    .footer {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, .step-panel, .progress-bar-fill, .checkmark-circle, .checkmark-check, .combobox-listbox {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo-container">
+        <img src="logo.png" alt="Binary Academy" onerror="this.style.display='none'">
+      </div>
+      <span class="pill-tag">সরাসরি অফলাইন ক্লাস</span>
+      <h1 class="main-heading">
+        ICT তে ফ্রী ক্লাস করে জিতে নাও<br>
+        <span class="highlight-price">৫০০০ টাকা</span>
+      </h1>
+      <p class="sub-heading">HSC ২০২৮ ব্যাচের জন্য | নিচের ফর্মটি পূরণ করো</p>
+      <div class="deadline-tag">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        শেষ তারিখ: ২৯ অক্টোবর
+      </div>
+    </header>
+
+    <div class="progress-container" id="progress-container">
+      <div class="progress-header">
+        <span>রেজিস্ট্রেশন ফর্ম</span>
+        <span id="step-indicator-text">ধাপ ১/৪</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progress-fill"></div>
+      </div>
+      <div class="step-labels">
+        <span class="step-label active" id="label-step-1">ব্যক্তিগত</span>
+        <span class="step-label" id="label-step-2">একাডেমিক</span>
+        <span class="step-label" id="label-step-3">ICT</span>
+        <span class="step-label" id="label-step-4">ফলো</span>
+      </div>
+    </div>
+
+    <main class="card">
+      <form id="regForm" novalidate aria-live="polite">
+        
+        <!-- Honeypot -->
+        <input type="text" name="website" id="website" class="honeypot-field" tabindex="-1" autocomplete="off">
+
+        <!-- ================= STEP 1 ================= -->
+        <div class="step-panel active" id="step-1">
+          <h2 class="step-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            ব্যক্তিগত তথ্য
+          </h2>
+
+          <div class="form-group" id="group-name">
+            <label class="form-label" for="name">নামের পূর্ণরূপ <span class="required-star">*</span></label>
+            <div class="input-wrapper">
+              <input type="text" id="name" name="name" class="form-control" placeholder="তোমার সম্পূর্ণ নাম" autocomplete="name" required>
+              <svg class="valid-tick" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="error-msg">নাম লিখতে হবে (সর্বনিম্ন ৩ অক্ষর)</div>
+          </div>
+
+          <div class="form-group" id="group-phone">
+            <label class="form-label" for="phone">তোমার মোবাইল নম্বর <span class="required-star">*</span></label>
+            <div class="input-wrapper">
+              <input type="tel" id="phone" name="phone" class="form-control" inputmode="tel" placeholder="017XXXXXXXX" autocomplete="tel" maxlength="11" required>
+              <svg class="valid-tick" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="error-msg">সঠিক মোবাইল নম্বর দাও (১১ ডিজিট)</div>
+          </div>
+
+          <fieldset class="form-group" id="group-whatsapp">
+            <legend class="form-label">এই নম্বরে কি WhatsApp আছে? <span class="required-star">*</span></legend>
+            <div class="chip-group">
+              <label class="chip-option">
+                <input type="radio" name="whatsapp" value="হ্যাঁ">
+                <span class="chip-label">হ্যাঁ</span>
+              </label>
+              <label class="chip-option">
+                <input type="radio" name="whatsapp" value="না">
+                <span class="chip-label">না</span>
+              </label>
+            </div>
+            <div class="error-msg">যেকোনো একটি অপশন সিলেক্ট করো</div>
+          </fieldset>
+
+          <div class="form-group" id="group-guardianName">
+            <label class="form-label" for="guardianName">অভিভাবকের নাম <span class="required-star">*</span></label>
+            <div class="input-wrapper">
+              <input type="text" id="guardianName" name="guardianName" class="form-control" placeholder="অভিভাবকের নাম" required>
+              <svg class="valid-tick" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="error-msg">অভিভাবকের নাম লিখতে হবে</div>
+          </div>
+
+          <div class="form-group" id="group-guardianPhone">
+            <label class="form-label" for="guardianPhone">অভিভাবকের মোবাইল নম্বর <span class="required-star">*</span></label>
+            <div class="input-wrapper">
+              <input type="tel" id="guardianPhone" name="guardianPhone" class="form-control" inputmode="tel" placeholder="017XXXXXXXX" maxlength="11" required>
+              <svg class="valid-tick" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="error-msg" id="err-guardianPhone">সঠিক মোবাইল নম্বর দাও (শিক্ষার্থীর নম্বর থেকে ভিন্ন হতে হবে)</div>
+          </div>
+
+          <div class="form-group" id="group-area">
+            <label class="form-label" for="area">তোমার এলাকা / গ্রাম (ঐচ্ছিক)</label>
+            <input type="text" id="area" name="area" class="form-control" placeholder="যেমন: মুক্তারপাড়া, নেত্রকোনা">
+          </div>
+        </div>
+
+        <!-- ================= STEP 2 ================= -->
+        <div class="step-panel" id="step-2">
+          <h2 class="step-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            একাডেমিক তথ্য
+          </h2>
+
+          <!-- SEARCHABLE COLLEGE COMBOBOX -->
+          <div class="form-group" id="group-college">
+            <label class="form-label" id="college-label" for="college-input">
+              এখন কোন কলেজে পড়ো? <span class="required-star">*</span>
+            </label>
+            
+            <div class="combobox-wrapper" id="combobox-wrapper">
+              <div class="input-wrapper">
+                <input type="text" 
+                       id="college-input" 
+                       name="collegeInput" 
+                       class="form-control" 
+                       placeholder="কলেজের নাম লিখে খোঁজো..." 
+                       autocomplete="off" 
+                       role="combobox" 
+                       aria-expanded="false" 
+                       aria-autocomplete="list" 
+                       aria-controls="college-listbox" 
+                       aria-activedescendant="" 
+                       required>
+                
+                <button type="button" class="clear-btn" id="college-clear-btn" aria-label="মুছে ফেলো" style="display: none;">&times;</button>
+                <svg class="valid-tick" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+
+              <!-- Dropdown Listbox -->
+              <ul id="college-listbox" class="combobox-listbox" role="listbox" aria-label="কলেজের তালিকা">
+                <!-- Options dynamically rendered here -->
+              </ul>
+            </div>
+
+            <div class="helper-text">২-৩টি অক্ষর লিখলেই সাজেশন দেখাবে। তালিকায় না থাকলে 'অন্যান্য' সিলেক্ট করো।</div>
+            <div class="error-msg" id="err-college">কলেজের নাম সিলেক্ট বা প্রদান করতে হবে (সর্বনিম্ন ৩ অক্ষর)</div>
+
+            <!-- Screen Reader Announcement Area -->
+            <div id="college-sr-announce" class="sr-only" aria-live="polite"></div>
+
+            <!-- Custom College Input (Revealed if "অন্যান্য" is clicked) -->
+            <div class="expandable-section" id="customCollegeSection">
+              <div class="custom-college-header">
+                <label class="form-label" for="customCollegeInput" style="margin-bottom: 0;">
+                  তোমার কলেজের নাম লিখো <span class="required-star">*</span>
+                </label>
+                <button type="button" class="change-college-link" id="changeCollegeBtn">পরিবর্তন করো</button>
+              </div>
+              <div class="input-wrapper" style="margin-top: 8px;">
+                <input type="text" id="customCollegeInput" name="customCollegeInput" class="form-control" placeholder="কলেজের পূর্ণ নাম" maxlength="80">
+                <svg class="valid-tick" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="error-msg" id="err-customCollege">কলেজের পূর্ণ নাম লিখতে হবে (সর্বনিম্ন ৩ অক্ষর)</div>
+            </div>
+          </div>
+
+          <fieldset class="form-group" id="group-classLevel">
+            <legend class="form-label">বর্তমান শ্রেণি <span class="required-star">*</span></legend>
+            <div class="chip-group">
+              <label class="chip-option">
+                <input type="radio" name="classLevel" value="একাদশ">
+                <span class="chip-label">একাদশ</span>
+              </label>
+              <label class="chip-option">
+                <input type="radio" name="classLevel" value="অন্যান্য">
+                <span class="chip-label">অন্যান্য</span>
+              </label>
+            </div>
+            <div class="error-msg">শ্রেণি সিলেক্ট করো</div>
+          </fieldset>
+
+          <fieldset class="form-group" id="group-group">
+            <legend class="form-label">বিভাগ <span class="required-star">*</span></legend>
+            <div class="chip-group">
+              <label class="chip-option">
+                <input type="radio" name="group" value="বিজ্ঞান">
+                <span class="chip-label">বিজ্ঞান</span>
+              </label>
+              <label class="chip-option">
+                <input type="radio" name="group" value="ব্যবসায় শিক্ষা">
+                <span class="chip-label">ব্যবসায় শিক্ষা</span>
+              </label>
+              <label class="chip-option">
+                <input type="radio" name="group" value="মানবিক">
+                <span class="chip-label">মানবিক</span>
+              </label>
+            </div>
+            <div class="error-msg">বিভাগ সিলেক্ট করো</div>
+          </fieldset>
+
+          <div class="form-group" id="group-sscGpa">
+            <label class="form-label" for="sscGpa">SSC GPA (ঐচ্ছিক)</label>
+            <input type="number" id="sscGpa" name="sscGpa" class="form-control" inputmode="decimal" step="0.01" min="1.00" max="5.00" placeholder="যেমন: ৪.৮৩">
+            <div class="error-msg">১.০০ থেকে ৫.০০ এর মধ্যে হতে হবে</div>
+          </div>
+
+          <fieldset class="form-group" id="group-branch">
+            <legend class="form-label">তুমি কোন ব্রাঞ্চে ক্লাস করতে চাও? <span class="required-star">*</span></legend>
+            <div class="branch-container">
+              <label class="branch-card">
+                <input type="radio" name="branch" value="ব্রাঞ্চ-০১ (মুক্তারপাড়া)">
+                <div class="branch-card-label">
+                  <div class="branch-radio-indicator"></div>
+                  <div class="branch-details">
+                    <div class="branch-name">ব্রাঞ্চ-০১</div>
+                    <div class="branch-address">মুক্তারপাড়া, নেত্রকোনা</div>
+                  </div>
+                </div>
+              </label>
+
+              <label class="branch-card">
+                <input type="radio" name="branch" value="ব্রাঞ্চ-০২ (সাতপাই)">
+                <div class="branch-card-label">
+                  <div class="branch-radio-indicator"></div>
+                  <div class="branch-details">
+                    <div class="branch-name">ব্রাঞ্চ-০২</div>
+                    <div class="branch-address">সাতপাই (সরকারি কলেজ সংলগ্ন), নেত্রকোনা</div>
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div class="error-msg">যেকোনো একটি ব্রাঞ্চ সিলেক্ট করো</div>
+          </fieldset>
+        </div>
+
+        <!-- ================= STEP 3 ================= -->
+        <div class="step-panel" id="step-3">
+          <h2 class="step-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            ICT সম্পর্কে জানাও
+          </h2>
+
+          <fieldset class="form-group" id="group-otherIct">
+            <legend class="form-label">তুমি কি এখন অন্য কোনো প্রতিষ্ঠান বা শিক্ষকের কাছে ICT পড়ছো? <span class="required-star">*</span></legend>
+            <div class="chip-group">
+              <label class="chip-option">
+                <input type="radio" name="otherIct" value="হ্যাঁ">
+                <span class="chip-label">হ্যাঁ</span>
+              </label>
+              <label class="chip-option">
+                <input type="radio" name="otherIct" value="না">
+                <span class="chip-label">না</span>
+              </label>
+            </div>
+            <div class="error-msg">যেকোনো একটি অপশন সিলেক্ট করো</div>
+          </fieldset>
+
+          <!-- Conditional Expandable Fields -->
+          <div class="expandable-section" id="otherIctDetails">
+            <div class="form-group" id="group-otherIctWhere">
+              <label class="form-label" for="otherIctWhere">কোন প্রতিষ্ঠান বা শিক্ষকের কাছে? <span class="required-star">*</span></label>
+              <input type="text" id="otherIctWhere" name="otherIctWhere" class="form-control" placeholder="প্রতিষ্ঠান বা শিক্ষকের নাম">
+              <div class="error-msg">এই ঘরটি পূরণ করতে হবে</div>
+            </div>
+
+            <div class="form-group" id="group-otherIctCourse">
+              <label class="form-label" for="otherIctCourse">কোন কোর্সে ভর্তি আছো? (ঐচ্ছিক)</label>
+              <input type="text" id="otherIctCourse" name="otherIctCourse" class="form-control" placeholder="কোর্সের নাম">
+            </div>
+          </div>
+
+          <fieldset class="form-group" id="group-source">
+            <legend class="form-label">আমাদের সম্পর্কে কোথা থেকে জানলে? <span class="required-star">*</span></legend>
+            <div class="chip-group">
+              <label class="chip-option">
+                <input type="radio" name="source" value="ফেসবুক">
+                <span class="chip-label">ফেসবুক</span>
+              </label>
+              <label class="chip-option">
+                <input type="radio" name="source" value="পোস্টার">
+                <span class="chip-label">পোস্টার</span>
+              </label>
+              <label class="chip-option">
+                <input type="radio" name="source" value="বন্ধু বা পরিচিত">
+                <span class="chip-label">বন্ধু বা পরিচিত</span>
+              </label>
+              <label class="chip-option">
+                <input type="radio" name="source" value="শিক্ষক">
+                <span class="chip-label">শিক্ষক</span>
+              </label>
+              <label class="chip-option">
+                <input type="radio" name="source" value="অন্য কিছু">
+                <span class="chip-label">অন্য কিছু</span>
+              </label>
+            </div>
+            <div class="error-msg">যেকোনো একটি অপশন সিলেক্ট করো</div>
+          </fieldset>
+
+          <div class="form-group" id="group-question">
+            <label class="form-label" for="question">তোমার ICT নিয়ে কোনো প্রশ্ন বা সমস্যা? (ঐচ্ছিক)</label>
+            <textarea id="question" name="question" class="form-control" maxlength="300" placeholder="তোমার যেকোনো প্রশ্ন লিখো..."></textarea>
+            <div class="char-counter"><span id="char-count">0</span>/300</div>
+          </div>
+        </div>
+
+        <!-- ================= STEP 4 ================= -->
+        <div class="step-panel" id="step-4">
+          <h2 class="step-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            আমাদের ফলো করো
+          </h2>
+
+          <p style="font-size: 14.5px; color: var(--muted); margin-bottom: 16px;">ফ্রী ক্লাসের আপডেট পেতে আমাদের ফলো করো।</p>
+
+          <!-- Facebook Card -->
+          <div class="social-card">
+            <div class="social-card-header">
+              <div class="social-info">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                <span class="social-title">Binary Academy (Facebook)</span>
+              </div>
+              <a href="https://www.facebook.com/profile.php?id=61589261861291" target="_blank" rel="noopener" class="btn-secondary-sm">
+                ফেসবুক পেজে যাও
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+            <label class="checkbox-container">
+              <input type="checkbox" id="followedFacebook" name="followedFacebook">
+              <span class="custom-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span class="checkbox-label-text">আমি ফেসবুক পেজ ফলো করেছি</span>
+            </label>
+          </div>
+
+          <!-- YouTube Card -->
+          <div class="social-card">
+            <div class="social-card-header">
+              <div class="social-info">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                <span class="social-title">Binary Academy (YouTube)</span>
+              </div>
+              <a href="https://www.youtube.com/@binaryAcademyICT?sub_confirmation=1" target="_blank" rel="noopener" class="btn-secondary-sm">
+                ইউটিউব চ্যানেলে যাও
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+            <label class="checkbox-container">
+              <input type="checkbox" id="followedYoutube" name="followedYoutube">
+              <span class="custom-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span class="checkbox-label-text">আমি ইউটিউব চ্যানেল সাবস্ক্রাইব করেছি</span>
+            </label>
+          </div>
+
+          <p style="font-size: 13px; color: var(--muted); margin-top: 4px; margin-bottom: 12px;">
+            ফলো না করলেও রেজিস্ট্রেশন করা যাবে, তবে আপডেট পেতে ফলো করা ভালো।
+          </p>
+
+          <!-- Collapsible Accordion -->
+          <div class="accordion-item" id="prize-accordion">
+            <button type="button" class="accordion-header" id="prize-accordion-btn">
+              <span>পুরস্কারের নিয়ম</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-content">
+              <p>[এখানে পুরস্কারের নিয়ম লিখুন]</p>
+            </div>
+          </div>
+
+          <!-- Consent Checkbox -->
+          <div class="form-group" id="group-consent" style="margin-top: 20px;">
+            <label class="checkbox-container">
+              <input type="checkbox" id="consent" name="consent" required>
+              <span class="custom-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span class="checkbox-label-text">
+                আমি নিশ্চিত করছি যে আমার দেওয়া তথ্য সঠিক এবং Binary Academy আমার বা আমার অভিভাবকের সাথে ফোনে যোগাযোগ করতে পারবে। <span class="required-star">*</span>
+              </span>
+            </label>
+            <div class="error-msg">রেজিস্ট্রেশন সম্পূর্ণ করতে এটিতে সম্মত হতে হবে</div>
+          </div>
+        </div>
+
+        <!-- ================= SUCCESS SCREEN ================= -->
+        <div class="success-screen" id="success-screen">
+          <svg class="checkmark-svg" viewBox="0 0 52 52">
+            <circle class="checkmark-circle" cx="26" cy="26" r="23" fill="none"/>
+            <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+          </svg>
+          <h2 class="success-heading">ধন্যবাদ! তোমার রেজিস্ট্রেশন হয়েছে ✅</h2>
+          <p class="success-subtext">আমরা খুব শীঘ্রই তোমার সাথে ফোনে যোগাযোগ করব।</p>
+
+          <div class="summary-card">
+            <div class="summary-title">মনোনীত ব্রাঞ্চ:</div>
+            <div class="summary-value" id="summary-branch-val">-</div>
+          </div>
+
+          <div class="contact-box">
+            <p style="font-size: 15px; color: var(--navy); font-weight: 600;">
+              সরাসরি কথা বলতে কল করো: <a href="tel:01580611996" class="tel-link">01580611996</a>
+            </p>
+          </div>
+
+          <!-- Social Links if not completed -->
+          <div id="remaining-socials" style="margin-top: 16px;"></div>
+
+          <span class="reset-link" id="reset-form-btn">নতুন রেজিস্ট্রেশন</span>
+        </div>
+
+        <!-- Global Submit Error Banner -->
+        <div class="error-msg" id="global-error" style="text-align: center; margin-top: 12px; font-size: 14px;"></div>
+
+        <!-- NAVIGATION BUTTONS -->
+        <div class="nav-buttons-wrapper" id="nav-buttons">
+          <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">
+            আগের ধাপ
+          </button>
+          <button type="button" class="btn btn-primary" id="nextBtn">
+            পরবর্তী
+          </button>
+        </div>
+
+      </form>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      Binary Academy | মুক্তারপাড়া ও সাতপাই, নেত্রকোনা | 01580611996
+    </footer>
+  </div>
+
+  <script>
+    // COLLEGES DATA ARRAY
+    const COLLEGES = [
+      { name: "নেত্রকোনা সরকারি কলেজ", area: "নেত্রকোনা সদর", aliases: ["netrokona government college", "netrokona govt college", "ngc"] },
+      { name: "নেত্রকোনা সরকারি মহিলা কলেজ", area: "নেত্রকোনা সদর", aliases: ["netrokona government mohila college", "netrokona govt mohila college", "mohila college"] },
+      { name: "আবু আব্বাস কলেজ", area: "নেত্রকোনা", aliases: ["abu abbas college", "abu abbas", "abu abbas collage"] },
+      { name: "কেন্দুয়া সরকারি কলেজ", area: "কেন্দুয়া", aliases: ["kendua government college", "kendua govt college"] },
+      { name: "দুর্গাপুর সরকারি কলেজ", area: "দুর্গাপুর", aliases: ["durgapur government college", "durgapur govt college"] },
+      { name: "পূর্বধলা সরকারি কলেজ", area: "পূর্বধলা", aliases: ["purbadhala government college", "purbadhala govt college"] },
+      { name: "কলমাকান্দা সরকারি কলেজ", area: "কলমাকান্দা", aliases: ["kalmakanda government college", "kalmakanda govt college"] },
+      { name: "মোহনগঞ্জ সরকারি কলেজ", area: "মোহনগঞ্জ", aliases: ["mohanganj government college", "mohanganj govt college"] },
+      { name: "খালিয়াজুরী সরকারি কলেজ", area: "খালিয়াজুরী", aliases: ["khaliajuri government college", "khaliajuri govt college"] },
+      { name: "বারহাট্টা সরকারি কলেজ", area: "বারহাট্টা", aliases: ["barhatta government college", "barhatta govt college"] },
+      { name: "আটপাড়া সরকারি কলেজ", area: "আটপাড়া", aliases: ["atpara government college", "atpara govt college"] },
+      { name: "মদন সরকারি কলেজ", area: "মদন", aliases: ["madan government college", "madan govt college"] }
+    ];
+
+    // CONFIGURATION
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwaByulNbeTYDOerdQpQb2_k_1NFIanhejaDgmp621Q0OKyvEEN60rOQt4I2ZGZp0Y1/exec";
+
+    // STATE VARIABLES
+    let currentStep = 1;
+    const totalSteps = 4;
+    let isSubmitting = false;
+    let isSubmitted = false;
+
+    // College Combobox State
+    let selectedCollegeFromList = false;
+    let selectedCollegeName = '';
+    let isCustomCollege = false;
+    let activeDescendantIndex = -1;
+    let currentFilteredSuggestions = [];
+
+    // HELPER: Bangla to English digit converter
+    function convertBnToEnDigits(str) {
+      if (!str) return '';
+      const bnDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+      return str.replace(/[০-৯]/g, d => bnDigits.indexOf(d));
+    }
+
+    // DOM ELEMENTS
+    const form = document.getElementById('regForm');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const progressFill = document.getElementById('progress-fill');
+    const stepIndicatorText = document.getElementById('step-indicator-text');
+    const globalError = document.getElementById('global-error');
+    const successScreen = document.getElementById('success-screen');
+    const navButtons = document.getElementById('nav-buttons');
+    const progressContainer = document.getElementById('progress-container');
+
+    // College Combobox Elements
+    const collegeInput = document.getElementById('college-input');
+    const collegeListbox = document.getElementById('college-listbox');
+    const collegeClearBtn = document.getElementById('college-clear-btn');
+    const customCollegeSection = document.getElementById('customCollegeSection');
+    const customCollegeInput = document.getElementById('customCollegeInput');
+    const changeCollegeBtn = document.getElementById('changeCollegeBtn');
+    const collegeSrAnnounce = document.getElementById('college-sr-announce');
+
+    // Phone digits conversion & realtime validation
+    const phoneInputs = ['phone', 'guardianPhone'];
+    phoneInputs.forEach(id => {
+      const input = document.getElementById(id);
+      input.addEventListener('input', (e) => {
+        let val = convertBnToEnDigits(e.target.value);
+        val = val.replace(/\D/g, '');
+        if (val.length > 11) val = val.slice(0, 11);
+        e.target.value = val;
+        validateField(id);
+      });
+    });
+
+    // SSC GPA Input formatting
+    const sscGpaInput = document.getElementById('sscGpa');
+    sscGpaInput.addEventListener('input', (e) => {
+      e.target.value = convertBnToEnDigits(e.target.value);
+      validateField('sscGpa');
+    });
+
+    // Realtime Name & Input validation
+    ['name', 'guardianName', 'customCollegeInput', 'otherIctWhere'].forEach(id => {
+      const input = document.getElementById(id);
+      if (input) {
+        input.addEventListener('input', () => validateField(id));
+      }
+    });
+
+    // Character Counter for Textarea
+    const questionTextarea = document.getElementById('question');
+    const charCountSpan = document.getElementById('char-count');
+    questionTextarea.addEventListener('input', (e) => {
+      charCountSpan.textContent = e.target.value.length;
+    });
+
+    // Conditional display for Other ICT
+    const otherIctRadios = document.querySelectorAll('input[name="otherIct"]');
+    const otherIctDetails = document.getElementById('otherIctDetails');
+    const otherIctWhereInput = document.getElementById('otherIctWhere');
+
+    otherIctRadios.forEach(radio => {
+      radio.addEventListener('change', (e) => {
+        if (e.target.value === 'হ্যাঁ') {
+          otherIctDetails.classList.add('open');
+          otherIctWhereInput.setAttribute('required', 'true');
+        } else {
+          otherIctDetails.classList.remove('open');
+          otherIctWhereInput.removeAttribute('required');
+          otherIctWhereInput.value = '';
+          document.getElementById('otherIctCourse').value = '';
+          clearFieldError('otherIctWhere');
+        }
+        clearFieldError('otherIct');
+      });
+    });
+
+    // Radio Chips & Branch error clear on select
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+      radio.addEventListener('change', (e) => {
+        clearFieldError(e.target.name);
+      });
+    });
+
+    // Consent Checkbox error clear
+    document.getElementById('consent').addEventListener('change', () => {
+      clearFieldError('consent');
+    });
+
+    // Accordion Toggle
+    const prizeBtn = document.getElementById('prize-accordion-btn');
+    const prizeAccordion = document.getElementById('prize-accordion');
+    prizeBtn.addEventListener('click', () => {
+      prizeAccordion.classList.toggle('active');
+    });
+
+    // Prevent accidental submit on Enter and move to next input field
+    form.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
+        if (e.target.id === 'college-input') return; // Handled by combobox logic
+        e.preventDefault();
+        const inputs = Array.from(form.querySelectorAll('input:not([type="hidden"]), select, textarea, button'));
+        const index = inputs.indexOf(e.target);
+        if (index > -1 && index < inputs.length - 1) {
+          inputs[index + 1].focus();
+        }
+      }
+    });
+
+    /* =========================================================
+       SEARCHABLE COLLEGE COMBOBOX LOGIC
+       ========================================================= */
+
+    function normalizeStr(str) {
+      if (!str) return '';
+      let norm = convertBnToEnDigits(str.toLowerCase().trim());
+      return norm.replace(/\s+/g, ' ');
+    }
+
+    function createHighlightedNode(text, query) {
+      const fragment = document.createDocumentFragment();
+      const normText = text.toLowerCase();
+      const normQ = query.toLowerCase().trim();
+
+      if (!normQ) {
+        fragment.appendChild(document.createTextNode(text));
+        return fragment;
+      }
+
+      const index = normText.indexOf(normQ);
+      if (index === -1) {
+        fragment.appendChild(document.createTextNode(text));
+        return fragment;
+      }
+
+      const before = text.substring(0, index);
+      const match = text.substring(index, index + normQ.length);
+      const after = text.substring(index + normQ.length);
+
+      if (before) fragment.appendChild(document.createTextNode(before));
+
+      const span = document.createElement('span');
+      span.className = 'match-highlight';
+      span.textContent = match;
+      fragment.appendChild(span);
+
+      if (after) fragment.appendChild(document.createTextNode(after));
+
+      return fragment;
+    }
+
+    function filterColleges(query) {
+      const normQ = normalizeStr(query);
+      if (!normQ) return [];
+
+      let priority1 = []; // Name starts with query
+      let priority2 = []; // Name contains query
+      let priority3 = []; // Alias contains query
+
+      COLLEGES.forEach(college => {
+        const nameNorm = normalizeStr(college.name);
+        const aliasesNorm = college.aliases.map(normalizeStr);
+
+        if (nameNorm.startsWith(normQ)) {
+          priority1.push(college);
+        } else if (nameNorm.includes(normQ)) {
+          priority2.push(college);
+        } else if (aliasesNorm.some(a => a.includes(normQ))) {
+          priority3.push(college);
+        }
+      });
+
+      return [...priority1, ...priority2, ...priority3].slice(0, 6);
+    }
+
+    function renderCollegeSuggestions(query) {
+      collegeListbox.innerHTML = '';
+      activeDescendantIndex = -1;
+      collegeInput.setAttribute('aria-activedescendant', '');
+
+      const normQ = normalizeStr(query);
+      if (normQ.length === 0) {
+        closeCollegeListbox();
+        return;
+      }
+
+      currentFilteredSuggestions = filterColleges(query);
+
+      // Render matched colleges
+      currentFilteredSuggestions.forEach((college, index) => {
+        const li = document.createElement('li');
+        li.id = `college-opt-${index}`;
+        li.className = 'combobox-option';
+        li.setAttribute('role', 'option');
+        li.setAttribute('aria-selected', 'false');
+
+        const titleDiv = document.createElement('div');
+        titleDiv.className = 'combobox-option-title';
+        titleDiv.appendChild(createHighlightedNode(college.name, query));
+
+        const areaDiv = document.createElement('div');
+        areaDiv.className = 'combobox-option-area';
+        areaDiv.textContent = college.area;
+
+        li.appendChild(titleDiv);
+        li.appendChild(areaDiv);
+
+        li.addEventListener('click', () => selectCollegeItem(college));
+        collegeListbox.appendChild(li);
+      });
+
+      // ALWAYS append fixed last option: "অন্যান্য (আমার কলেজ তালিকায় নেই)"
+      const otherLi = document.createElement('li');
+      otherLi.id = `college-opt-${currentFilteredSuggestions.length}`;
+      otherLi.className = 'combobox-option combobox-option-other';
+      otherLi.setAttribute('role', 'option');
+      otherLi.setAttribute('aria-selected', 'false');
+
+      const iconSpan = document.createElement('span');
+      iconSpan.textContent = '➕';
+      const textSpan = document.createElement('span');
+      textSpan.textContent = 'অন্যান্য (আমার কলেজ তালিকায় নেই)';
+
+      otherLi.appendChild(iconSpan);
+      otherLi.appendChild(textSpan);
+
+      otherLi.addEventListener('click', () => selectOtherCollegeOption(query));
+      collegeListbox.appendChild(otherLi);
+
+      // Open Listbox & announce to Screen Reader
+      collegeListbox.classList.add('open');
+      collegeInput.setAttribute('aria-expanded', 'true');
+
+      const totalCount = currentFilteredSuggestions.length + 1;
+      collegeSrAnnounce.textContent = `${totalCount} টি সাজেশন পাওয়া গেছে।`;
+    }
+
+    function closeCollegeListbox() {
+      collegeListbox.classList.remove('open');
+      collegeInput.setAttribute('aria-expanded', 'false');
+      activeDescendantIndex = -1;
+      collegeInput.setAttribute('aria-activedescendant', '');
+    }
+
+    function selectCollegeItem(college) {
+      collegeInput.value = college.name;
+      selectedCollegeName = college.name;
+      selectedCollegeFromList = true;
+      isCustomCollege = false;
+
+      closeCollegeListbox();
+      customCollegeSection.classList.remove('open');
+      customCollegeInput.value = '';
+
+      collegeClearBtn.style.display = 'flex';
+      validateCollegeField();
+    }
+
+    function selectOtherCollegeOption(currentQuery) {
+      collegeInput.value = 'অন্যান্য (আমার কলেজ তালিকায় নেই)';
+      selectedCollegeName = 'অন্যান্য';
+      selectedCollegeFromList = false;
+      isCustomCollege = true;
+
+      closeCollegeListbox();
+      customCollegeSection.classList.add('open');
+
+      // Carry over typed text if not selected from list
+      if (currentQuery && currentQuery.trim() !== '' && currentQuery !== 'অন্যান্য') {
+        customCollegeInput.value = currentQuery.trim();
+      }
+
+      collegeClearBtn.style.display = 'flex';
+      customCollegeInput.focus();
+      validateCollegeField();
+    }
+
+    function updateActiveDescendant(items) {
+      items.forEach((item, idx) => {
+        if (idx === activeDescendantIndex) {
+          item.classList.add('active-descendant');
+          item.setAttribute('aria-selected', 'true');
+          collegeInput.setAttribute('aria-activedescendant', item.id);
+          item.scrollIntoView({ block: 'nearest' });
+        } else {
+          item.classList.remove('active-descendant');
+          item.setAttribute('aria-selected', 'false');
+        }
+      });
+    }
+
+    // EVENT LISTENERS FOR COMBOBOX
+    collegeInput.addEventListener('input', (e) => {
+      const val = e.target.value;
+      if (val.trim().length > 0) {
+        collegeClearBtn.style.display = 'flex';
+      } else {
+        collegeClearBtn.style.display = 'none';
+      }
+
+      if (isCustomCollege) {
+        isCustomCollege = false;
+        customCollegeSection.classList.remove('open');
+      }
+
+      selectedCollegeFromList = false;
+      selectedCollegeName = '';
+
+      renderCollegeSuggestions(val);
+      validateCollegeField();
+    });
+
+    collegeInput.addEventListener('focus', () => {
+      if (!isCustomCollege && collegeInput.value.trim().length > 0) {
+        renderCollegeSuggestions(collegeInput.value);
+      }
+    });
+
+    collegeInput.addEventListener('keydown', (e) => {
+      const items = Array.from(collegeListbox.querySelectorAll('.combobox-option'));
+      if (!collegeListbox.classList.contains('open') || items.length === 0) return;
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        activeDescendantIndex = (activeDescendantIndex + 1) % items.length;
+        updateActiveDescendant(items);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        activeDescendantIndex = (activeDescendantIndex - 1 + items.length) % items.length;
+        updateActiveDescendant(items);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (activeDescendantIndex >= 0 && activeDescendantIndex < items.length) {
+          items[activeDescendantIndex].click();
+        }
+      } else if (e.key === 'Escape') {
+        closeCollegeListbox();
+      }
+    });
+
+    collegeClearBtn.addEventListener('click', () => {
+      collegeInput.value = '';
+      selectedCollegeFromList = false;
+      selectedCollegeName = '';
+      isCustomCollege = false;
+      collegeClearBtn.style.display = 'none';
+
+      customCollegeSection.classList.remove('open');
+      customCollegeInput.value = '';
+
+      closeCollegeListbox();
+      collegeInput.focus();
+      validateCollegeField();
+    });
+
+    changeCollegeBtn.addEventListener('click', () => {
+      collegeInput.value = '';
+      selectedCollegeFromList = false;
+      selectedCollegeName = '';
+      isCustomCollege = false;
+      collegeClearBtn.style.display = 'none';
+
+      customCollegeSection.classList.remove('open');
+      customCollegeInput.value = '';
+
+      closeCollegeListbox();
+      collegeInput.focus();
+      validateCollegeField();
+    });
+
+    // Close listbox on outside click
+    document.addEventListener('click', (e) => {
+      if (!document.getElementById('combobox-wrapper').contains(e.target)) {
+        closeCollegeListbox();
+      }
+    });
+
+    /* =========================================================
+       VALIDATION FUNCTIONS
+       ========================================================= */
+
+    function validateCollegeField() {
+      const group = document.getElementById('group-college');
+      let isValid = false;
+
+      if (isCustomCollege) {
+        const val = customCollegeInput.value.trim();
+        isValid = val.length >= 3;
+
+        if (!isValid) {
+          group.classList.add('has-error');
+          customCollegeInput.classList.add('is-invalid');
+          customCollegeInput.classList.remove('is-valid');
+        } else {
+          group.classList.remove('has-error');
+          customCollegeInput.classList.remove('is-invalid');
+          customCollegeInput.classList.add('is-valid');
+          collegeInput.classList.remove('is-invalid');
+          collegeInput.classList.add('is-valid');
+        }
+      } else {
+        const inputVal = collegeInput.value.trim();
+        if (selectedCollegeFromList) {
+          isValid = true;
+        } else {
+          isValid = inputVal.length >= 3;
+        }
+
+        if (!isValid) {
+          group.classList.add('has-error');
+          collegeInput.classList.add('is-invalid');
+          collegeInput.classList.remove('is-valid');
+        } else {
+          group.classList.remove('has-error');
+          collegeInput.classList.remove('is-invalid');
+          collegeInput.classList.add('is-valid');
+        }
+      }
+
+      return isValid;
+    }
+
+    function validateField(id) {
+      if (id === 'college' || id === 'collegeInput') {
+        return validateCollegeField();
+      }
+
+      const field = document.getElementById(id);
+      if (!field) return true;
+
+      const group = document.getElementById(`group-${id}`);
+      let isValid = true;
+      const val = field.value.trim();
+
+      if (id === 'name') {
+        isValid = val.length >= 3;
+      } else if (id === 'phone') {
+        isValid = /^01[3-9]\d{8}$/.test(val);
+      } else if (id === 'guardianName') {
+        isValid = val.length > 0;
+      } else if (id === 'guardianPhone') {
+        const studentPhone = document.getElementById('phone').value.trim();
+        const isFormatValid = /^01[3-9]\d{8}$/.test(val);
+        const isDifferent = val !== studentPhone;
+        
+        isValid = isFormatValid && isDifferent;
+        const errElement = document.getElementById('err-guardianPhone');
+        if (errElement) {
+          if (!isFormatValid) {
+            errElement.textContent = 'সঠিক মোবাইল নম্বর দাও (১১ ডিজিট)';
+          } else if (!isDifferent) {
+            errElement.textContent = 'শিক্ষার্থী ও অভিভাবকের নম্বর একই হতে পারবে না';
+          }
+        }
+      } else if (id === 'sscGpa') {
+        if (val !== '') {
+          const num = parseFloat(val);
+          isValid = !isNaN(num) && num >= 1.00 && num <= 5.00;
+        } else {
+          isValid = true;
+        }
+      } else if (id === 'otherIctWhere') {
+        const isOtherIct = document.querySelector('input[name="otherIct"]:checked')?.value === 'হ্যাঁ';
+        if (isOtherIct) {
+          isValid = val.length > 0;
+        }
+      }
+
+      if (group) {
+        if (!isValid) {
+          group.classList.add('has-error');
+          field.classList.add('is-invalid');
+          field.classList.remove('is-valid');
+        } else {
+          group.classList.remove('has-error');
+          field.classList.remove('is-invalid');
+          if (val !== '' || field.hasAttribute('required')) {
+            field.classList.add('is-valid');
+          } else {
+            field.classList.remove('is-valid');
+          }
+        }
+      }
+
+      return isValid;
+    }
+
+    function validateRadioGroup(name) {
+      const group = document.getElementById(`group-${name}`);
+      const checked = document.querySelector(`input[name="${name}"]:checked`);
+      const isValid = !!checked;
+
+      if (group) {
+        if (!isValid) {
+          group.classList.add('has-error');
+        } else {
+          group.classList.remove('has-error');
+        }
+      }
+
+      return isValid;
+    }
+
+    function clearFieldError(idOrName) {
+      const group = document.getElementById(`group-${idOrName}`);
+      if (group) {
+        group.classList.remove('has-error');
+      }
+      const field = document.getElementById(idOrName);
+      if (field) {
+        field.classList.remove('is-invalid');
+      }
+    }
+
+    function validateStep(step) {
+      let isValid = true;
+      let firstInvalidElement = null;
+
+      if (step === 1) {
+        const fields = ['name', 'phone', 'guardianName', 'guardianPhone'];
+        fields.forEach(id => {
+          if (!validateField(id)) {
+            isValid = false;
+            if (!firstInvalidElement) firstInvalidElement = document.getElementById(id);
+          }
+        });
+
+        if (!validateRadioGroup('whatsapp')) {
+          isValid = false;
+          if (!firstInvalidElement) firstInvalidElement = document.getElementById('group-whatsapp');
+        }
+      } else if (step === 2) {
+        if (!validateCollegeField()) {
+          isValid = false;
+          firstInvalidElement = isCustomCollege ? customCollegeInput : collegeInput;
+        }
+        if (!validateRadioGroup('classLevel')) {
+          isValid = false;
+          if (!firstInvalidElement) firstInvalidElement = document.getElementById('group-classLevel');
+        }
+        if (!validateRadioGroup('group')) {
+          isValid = false;
+          if (!firstInvalidElement) firstInvalidElement = document.getElementById('group-group');
+        }
+        if (!validateField('sscGpa')) {
+          isValid = false;
+          if (!firstInvalidElement) firstInvalidElement = document.getElementById('sscGpa');
+        }
+        if (!validateRadioGroup('branch')) {
+          isValid = false;
+          if (!firstInvalidElement) firstInvalidElement = document.getElementById('group-branch');
+        }
+      } else if (step === 3) {
+        if (!validateRadioGroup('otherIct')) {
+          isValid = false;
+          if (!firstInvalidElement) firstInvalidElement = document.getElementById('group-otherIct');
+        }
+        const isOtherIct = document.querySelector('input[name="otherIct"]:checked')?.value === 'হ্যাঁ';
+        if (isOtherIct) {
+          if (!validateField('otherIctWhere')) {
+            isValid = false;
+            if (!firstInvalidElement) firstInvalidElement = document.getElementById('otherIctWhere');
+          }
+        }
+        if (!validateRadioGroup('source')) {
+          isValid = false;
+          if (!firstInvalidElement) firstInvalidElement = document.getElementById('group-source');
+        }
+      } else if (step === 4) {
+        const consentCheckbox = document.getElementById('consent');
+        const consentGroup = document.getElementById('group-consent');
+        if (!consentCheckbox.checked) {
+          isValid = false;
+          consentGroup.classList.add('has-error');
+          if (!firstInvalidElement) firstInvalidElement = consentCheckbox;
+        } else {
+          consentGroup.classList.remove('has-error');
+        }
+      }
+
+      if (!isValid && firstInvalidElement) {
+        firstInvalidElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (firstInvalidElement.focus && typeof firstInvalidElement.focus === 'function') {
+          firstInvalidElement.focus();
+        }
+      }
+
+      return isValid;
+    }
+
+    function updateStepUI() {
+      document.querySelectorAll('.step-panel').forEach((panel, idx) => {
+        if (idx + 1 === currentStep) {
+          panel.classList.add('active');
+        } else {
+          panel.classList.remove('active');
+        }
+      });
+
+      const fillPercentage = (currentStep / totalSteps) * 100;
+      progressFill.style.width = `${fillPercentage}%`;
+      stepIndicatorText.textContent = `ধাপ ${convertBnToEnDigits(currentStep.toString())}/${convertBnToEnDigits(totalSteps.toString())}`;
+
+      for (let i = 1; i <= totalSteps; i++) {
+        const label = document.getElementById(`label-step-${i}`);
+        if (i === currentStep) {
+          label.className = 'step-label active';
+        } else if (i < currentStep) {
+          label.className = 'step-label completed';
+        } else {
+          label.className = 'step-label';
+        }
+      }
+
+      if (currentStep === 1) {
+        prevBtn.style.display = 'none';
+      } else {
+        prevBtn.style.display = 'inline-flex';
+      }
+
+      if (currentStep === totalSteps) {
+        nextBtn.textContent = 'রেজিস্ট্রেশন সম্পূর্ণ করো';
+      } else {
+        nextBtn.textContent = 'পরবর্তী';
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    nextBtn.addEventListener('click', () => {
+      if (isSubmitting) return;
+
+      if (!validateStep(currentStep)) return;
+
+      if (currentStep < totalSteps) {
+        currentStep++;
+        updateStepUI();
+      } else {
+        submitForm();
+      }
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (isSubmitting) return;
+      if (currentStep > 1) {
+        currentStep--;
+        updateStepUI();
+      }
+    });
+
+    /* =========================================================
+       FORM SUBMISSION
+       ========================================================= */
+
+    function submitForm() {
+      // Honeypot check
+      const honeypotVal = document.getElementById('website').value;
+      if (honeypotVal) {
+        showSuccessScreen();
+        return;
+      }
+
+      if (isSubmitted) return;
+
+      isSubmitting = true;
+      nextBtn.disabled = true;
+      prevBtn.disabled = true;
+      nextBtn.innerHTML = '<div class="spinner"></div> জমা দেওয়া হচ্ছে...';
+      globalError.textContent = '';
+
+      // Determine final college value & collegeFromList status
+      let finalCollegeName = '';
+      if (isCustomCollege) {
+        finalCollegeName = customCollegeInput.value.trim();
+      } else {
+        finalCollegeName = collegeInput.value.trim();
+      }
+
+      // Prepare payload with exact keys requested
+      const payload = {
+        timestamp: new Date().toISOString(),
+        name: document.getElementById('name').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        whatsapp: document.querySelector('input[name="whatsapp"]:checked')?.value || '',
+        guardianName: document.getElementById('guardianName').value.trim(),
+        guardianPhone: document.getElementById('guardianPhone').value.trim(),
+        area: document.getElementById('area').value.trim(),
+        college: finalCollegeName,
+        collegeFromList: selectedCollegeFromList, // boolean true/false
+        classLevel: document.querySelector('input[name="classLevel"]:checked')?.value || '',
+        group: document.querySelector('input[name="group"]:checked')?.value || '',
+        sscGpa: document.getElementById('sscGpa').value.trim(),
+        branch: document.querySelector('input[name="branch"]:checked')?.value || '',
+        otherIct: document.querySelector('input[name="otherIct"]:checked')?.value || '',
+        otherIctWhere: document.getElementById('otherIctWhere').value.trim(),
+        otherIctCourse: document.getElementById('otherIctCourse').value.trim(),
+        source: document.querySelector('input[name="source"]:checked')?.value || '',
+        question: document.getElementById('question').value.trim(),
+        followedFacebook: document.getElementById('followedFacebook').checked ? 'হ্যাঁ' : 'না',
+        followedYoutube: document.getElementById('followedYoutube').checked ? 'হ্যাঁ' : 'না',
+        batch: 'HSC 2028',
+        consent: document.getElementById('consent').checked ? 'হ্যাঁ' : 'না'
+      };
+
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8'
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(() => {
+        isSubmitted = true;
+        showSuccessScreen();
+      })
+      .catch((err) => {
+        console.error('Submission error:', err);
+        globalError.textContent = 'জমা দেওয়া যায়নি। ইন্টারনেট চেক করে আবার চেষ্টা করো।';
+        nextBtn.disabled = false;
+        prevBtn.disabled = false;
+        nextBtn.textContent = 'রেজিস্ট্রেশন সম্পূর্ণ করো';
+        isSubmitting = false;
+      });
+    }
+
+    function showSuccessScreen() {
+      document.querySelectorAll('.step-panel').forEach(p => p.style.display = 'none');
+      navButtons.style.display = 'none';
+      progressContainer.style.display = 'none';
+
+      const selectedBranch = document.querySelector('input[name="branch"]:checked')?.value || 'ব্রাঞ্চ-০১ (মুক্তারপাড়া)';
+      document.getElementById('summary-branch-val').textContent = selectedBranch;
+
+      const followedFb = document.getElementById('followedFacebook').checked;
+      const followedYt = document.getElementById('followedYoutube').checked;
+      const remainingDiv = document.getElementById('remaining-socials');
+      remainingDiv.innerHTML = '';
+
+      if (!followedFb || !followedYt) {
+        let text = document.createElement('p');
+        text.style.fontSize = '14px';
+        text.style.color = 'var(--muted)';
+        text.style.marginBottom = '12px';
+        text.textContent = 'আপডেট পেতে বাকি পেজগুলোতে যুক্ত হও:';
+        remainingDiv.appendChild(text);
+
+        if (!followedFb) {
+          remainingDiv.innerHTML += `
+            <a href="https://www.facebook.com/profile.php?id=61589261861291" target="_blank" rel="noopener" class="btn-secondary-sm" style="margin: 4px;">
+              ফেসবুক পেজে যাও
+            </a>
+          `;
+        }
+        if (!followedYt) {
+          remainingDiv.innerHTML += `
+            <a href="https://www.youtube.com/@binaryAcademyICT?sub_confirmation=1" target="_blank" rel="noopener" class="btn-secondary-sm" style="margin: 4px;">
+              ইউটিউব চ্যানেলে যাও
+            </a>
+          `;
+        }
+      }
+
+      successScreen.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Reset Form Handler
+    document.getElementById('reset-form-btn').addEventListener('click', () => {
+      form.reset();
+      currentStep = 1;
+      isSubmitting = false;
+      isSubmitted = false;
+
+      selectedCollegeFromList = false;
+      selectedCollegeName = '';
+      isCustomCollege = false;
+      collegeClearBtn.style.display = 'none';
+      customCollegeSection.classList.remove('open');
+
+      document.querySelectorAll('.form-control').forEach(f => {
+        f.classList.remove('is-valid', 'is-invalid');
+      });
+      document.querySelectorAll('.form-group').forEach(g => {
+        g.classList.remove('has-error');
+      });
+      otherIctDetails.classList.remove('open');
+      charCountSpan.textContent = '0';
+
+      successScreen.style.display = 'none';
+      navButtons.style.display = 'flex';
+      progressContainer.style.display = 'block';
+      nextBtn.disabled = false;
+      prevBtn.disabled = false;
+
+      updateStepUI();
+    });
+  </script>
+</body>
+</html>
