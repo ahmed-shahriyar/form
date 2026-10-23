@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Binary Academy - ICT ফ্রী ক্লাস রেজিস্ট্রেশন (HSC ২০২৮)</title>
   
-  <!-- Google Fonts: Hind Siliguri -->
+  <!-- Google Fonts: Hind Siliguri & Montserrat for Logo -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;600;700&family=Montserrat:ital,wght@0,800;1,700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -91,18 +91,67 @@
       align-items: center;
     }
 
+    /* Brand Logo & Title Styling (Replicating Image design) */
+    .brand-header-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
     .logo-container {
-      height: 72px;
-      margin-bottom: 12px;
+      margin-bottom: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .logo-container img {
-      height: 72px;
+      height: 76px;
       max-width: 220px;
       object-fit: contain;
+    }
+
+    .brand-logo-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-transform: uppercase;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .brand-binary {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--green);
+      letter-spacing: 3px;
+      line-height: 1;
+    }
+
+    .brand-academy-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 4px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .brand-academy-line {
+      height: 2px;
+      width: 24px;
+      background-color: var(--teal);
+      display: inline-block;
+      border-radius: 2px;
+    }
+
+    .brand-academy {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--teal);
+      letter-spacing: 4px;
+      font-style: italic;
     }
 
     .pill-tag {
@@ -956,9 +1005,22 @@
     
     <!-- HEADER -->
     <header class="header">
-      <div class="logo-container">
-        <img src="logo.png" alt="Binary Academy" onerror="this.style.display='none'">
+      
+      <!-- Brand Header Section with Image + Styled Title -->
+      <div class="brand-header-box">
+        <div class="logo-container">
+          <img src="logo.png" alt="Binary Academy" onerror="this.style.display='none'">
+        </div>
+        <div class="brand-logo-text">
+          <span class="brand-binary">BINARY</span>
+          <div class="brand-academy-wrapper">
+            <span class="brand-academy-line"></span>
+            <span class="brand-academy">ACADEMY</span>
+            <span class="brand-academy-line"></span>
+          </div>
+        </div>
       </div>
+
       <span class="pill-tag">সরাসরি অফলাইন ক্লাস</span>
       <h1 class="main-heading">
         ICT তে ফ্রী ক্লাস করে জিতে নাও<br>
@@ -1314,10 +1376,10 @@
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div class="accordion-content">
-              <p>১️⃣ ফর্ম পূরণ করো
-২️⃣ ৩-৫টি ফ্রী ক্লাস করো
-৩️⃣ পরীক্ষা দাও
-🏆 ১ম ২,৫০০৳ | ২য় ১,৫০০৳ | ৩য় ১,০০০৳
+              <p>১️. ফর্ম পূরণ করো<br>
+                  ২️. ৩-৫টি ফ্রী ক্লাস করো<br>
+                   ৩️. পরীক্ষা দাও <br>
+🏆 ১ম ২,৫০০৳ | ২য় ১,৫০০৳ | ৩য় ১,০০০৳<br>
 🎁 ১ম-১০ম: কোর্সে ৫০০৳ ছাড় + গিফট</p>
             </div>
           </div>
